@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card design */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 10;
+  position: relative;
+}
+
+h1 {
+  color: #e91e63;
+}
+
+button {
+  padding: 12px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+}
+
+.yes {
+  background-color: #e91e63;
+  color: white;
+}
+
+.no {
+  background-color: #555;
+  color: white;
+}
+
+/* Floating hearts */
+.heart {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background-color: #ff4d6d;
+  transform: rotate(45deg);
+  animation: float 4s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: #ff4d6d;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: 10px; top: 0; }
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+  100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- Background music -->
+<audio autoplay loop>
+  <source src="https://raw.githubusercontent.com/twiza27/Valentine/main/ordinary.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>💘 Valentine 💘</h1>
+  <p><strong>Idah Sekelani Mbewe</strong>,<br>will you be my Valentine? 💕</p>
+
+  <form action="https://formsubmit.co/twizamungomba@gmail.com" method="POST">
+    <button class="yes" type="submit" name="Answer" value="YES ❤️" onclick="yesMessage()">Yes ❤️</button>
+    <button class="no" type="button" id="noBtn">No 💔</button>
+
+    <input type="hidden" name="_subject" value="Valentine Response 💌">
+    <input type="hidden" name="_captcha" value="false">
+  </form>
+</div>
+
+<script>
+// Create floating hearts
+for(let i=0;i<20;i++){
+  let heart=document.createElement('div');
+  heart.className='heart';
+  heart.style.left=Math.random()*100+'vw';
+  heart.style.animationDuration=(2+Math.random()*3)+'s';
+  heart.style.fontSize=(10+Math.random()*10)+'px';
+  document.body.appendChild(heart);
+}
+
+// Move No button when hovered
+let noBtn = document.getElementById('noBtn');
+noBtn.addEventListener('mouseover', function(){
+  noBtn.style.position = 'absolute';
+  noBtn.style.top = Math.random()*80+'vh';
+  noBtn.style.left = Math.random()*80+'vw';
+});
+
+// Show message when Yes clicked
+function yesMessage(){
+  alert("💖 Yay! You clicked YES! 💖");
+}
+</script>
+
+</body>
+</html>
